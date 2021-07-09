@@ -50,3 +50,8 @@ packages:
     commit: 14bc3248c423f486ae710d523b8996ddb3dac854
     subdirs:
       - amazonka
+
+  # Needed for correct notIn behavior
+  # https://github.com/bitemyapp/esqueleto/pull/273
+  - git: https://github.com/bitemyapp/esqueleto
+    commit: e8271a00d6609aa614ec45edaf68f4a0d2dd4c6e
