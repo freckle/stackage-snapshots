@@ -25,16 +25,35 @@ lts-X.Y -> lts/X/Y.yaml
 If we make multiple Snapshots on the same base resolver, we may use branches,
 tags, or distinct files with descriptive suffixes.
 
-## Updates
+## Creating a new snapshot
 
-Every 2 weeks, we move our applications to the newest LTS:
+We try to do this every two weeks, but feel free to do it whenever you like.
 
-1. Copy the latest Snapshot to a new, correctly-named file
-1. Update its `resolver`
-1. See if any Git `extra-deps` have been released to Hackage
-1. See if any Hackage `extra-deps` have been added to this Resolver
+1. Run `bin/new-snapshot`
 
-## Testing
+Proceed with the following maintenance steps:
+
+### Update any dependencies
+
+**Do any git dependencies have the changes we need in Hackage now?**
+
+If so, make them Hackage dependencies. If not,
+
+**Do any git dependencies have newer commits?**
+
+If so, and they're our own package, update the `commit` to latest. If they are
+not our own package, leave them be. Unless there is explicit reason to update,
+we'll wait until the next Hackage version for packages we don't own ourselves.
+
+**Do any Hackage dependences have this version (or newer) in the new resolver?**
+
+If so, remove them and rely on the resolver version. If not,
+
+**Do any Hackage dependencies have newer versions on Hackage?**
+
+If so, update to them.
+
+### Test the snapshot
 
 Test changes by updating an application to use a local copy in an adjacent
 clone:
@@ -43,6 +62,12 @@ clone:
 # stack.yaml
 resolver: ../../stackage-snapshots/lts/18/1.yaml
 ```
+
+*Testing with `megarepo` is usually enough.*
+
+### Migrate each Application to the new snapshots
+
+Remove any app-specific `extra-deps` are no longer required.
 
 ---
 
