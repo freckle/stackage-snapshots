@@ -15,7 +15,7 @@ packages:
 
   # https://app.asana.com/0/1160405925455011/1200183896199567/f
   - git: https://github.com/freckle/frontrow-app
-    commit: 04d1535295440735f507e6e563904cb67e4f04dd
+    commit: 0a283e6f5fbbe21d9f63438432137f38cce65a5d
 
   # https://app.asana.com/0/399653121150251/1199556619843537/f
   - git: https://github.com/freckle/yesod-routes-flow
