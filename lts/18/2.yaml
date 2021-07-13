@@ -6,16 +6,15 @@ packages:
 
   # Newer versions that will arrive in next major LTS
   - faktory-1.1.0.0@sha256:149c19d4fc7667545234f5fd8edd96b12208b8151c012f5d90dd29c0fda9934d,8970
-  - hspec-junit-formatter-1.0.0.5@sha256:bef98ad379c5288e9ddab836e27bc009df64dc4f8fc5bd9c56dc1f19f2061da7,1869
   - aws-xray-client-persistent-0.1.0.2@sha256:f00b3c3da576c488f2605ab5d049437d935eae429e7fe0eb9a6dc53d0367aebc,1682
 
   # https://github.com/freckle/asana/issues/29
   - git: https://github.com/freckle/asana
-    commit: be6ff782f0fa0d1d11e83467c0fe77e7a73b85d7
+    commit: 91ce6ade118674bb273966943370684eba71f227
 
   # https://app.asana.com/0/1160405925455011/1200183896199567/f
   - git: https://github.com/freckle/frontrow-app
-    commit: 04d1535295440735f507e6e563904cb67e4f04dd
+    commit: 0a283e6f5fbbe21d9f63438432137f38cce65a5d
 
   # https://app.asana.com/0/399653121150251/1199556619843537/f
   - git: https://github.com/freckle/yesod-routes-flow
@@ -34,7 +33,7 @@ packages:
   - oidc-client-0.6.0.0@sha256:2079dc5c9dfb5b3e2fa93098254ca16787c01a0cd3634b1d84afe84c9a6c4825,3368
   - pwstore-fast-2.4.4@sha256:9b6a37510d8b9f37f409a8ab3babac9181afcaaa3fce8ba1c131a7ed3de30698,1351
 
-  # For brittany-0.13.1.1
+  # For brittany-0.13.1.2
   - data-tree-print-0.1.0.2@sha256:d845e99f322df70e0c06d6743bf80336f5918d5423498528beb0593a2afc1703,1620
 
   # For stylish-haskell
@@ -50,8 +49,3 @@ packages:
     commit: 14bc3248c423f486ae710d523b8996ddb3dac854
     subdirs:
       - amazonka
-
-  # Needed for correct notIn behavior
-  # https://github.com/bitemyapp/esqueleto/pull/273
-  - git: https://github.com/bitemyapp/esqueleto
-    commit: e8271a00d6609aa614ec45edaf68f4a0d2dd4c6e
