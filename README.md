@@ -29,7 +29,7 @@ snapshot at:
 lts/X/Y/FR{revision}.yaml
 ```
 
-*See [this Issue][issue] for a more complete discussion.*
+_See [this Issue][issue] for a more complete discussion._
 
 [issue]: https://github.com/freckle/stackage-snapshots/issues/4
 
@@ -71,7 +71,7 @@ clone:
 resolver: ../../stackage-snapshots/lts/18/1.yaml
 ```
 
-*Testing with `megarepo` is usually enough.*
+_Testing with `megarepo` is usually enough._
 
 ### Migrate each Application to the new snapshots
 
