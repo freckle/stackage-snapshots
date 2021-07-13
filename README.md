@@ -22,8 +22,16 @@ We define Snapshots built on a given LTS and match the same file structure:
 lts-X.Y -> lts/X/Y.yaml
 ```
 
-If we make multiple Snapshots on the same base resolver, we may use branches,
-tags, or distinct files with descriptive suffixes.
+To make updates to a Snapshot without changing the base resolver, create a new
+snapshot at:
+
+```
+lts/X/Y/FR{revision}.yaml
+```
+
+*See [this Issue][issue] for a more complete discussion.*
+
+[issue]: https://github.com/freckle/stackage-snapshots/issues/4
 
 ## Creating a new snapshot
 
