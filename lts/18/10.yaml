@@ -19,6 +19,11 @@ packages:
 
   # === Dependencies we don't own
 
+  # Newer versions that will arrive in next major LTS
+  - hspec-core-2.8.3@sha256:e4c1e08e16842804c470c2b4722e417ed2a556a47a74107401ad42195522f7a7,4992
+  - hspec-2.8.3@sha256:43a42e23994a6c61a7adead7e8a412016680234f5a14a157f68c020871e59534,1709
+  - hspec-junit-formatter-1.0.1.0@sha256:6429871263be4532a3a6d08e72da5a8e4c00e8bfbfd7fc5b8352a3643f867453,2652
+
   # Open an Issue asking the authors if they'd add them to Stackage and/or offer
   # to adopt them in Stackage ourselves. Check in each LTS bump if they've been
   # added yet.
