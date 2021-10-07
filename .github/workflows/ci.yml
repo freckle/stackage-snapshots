@@ -49,8 +49,8 @@ jobs:
           path: |
             ~/.stack
           key: ${{ matrix.snapshot }}-${{ hashFiles('test/*.yaml') }}
-          restore-keys:
-            - ${{ matrix.snapshot }}-
+          restore-keys: |
+            ${{ matrix.snapshot }}-
 
       - name: Unpack
         if: steps.cache.outputs.cache-hit != 'true'
