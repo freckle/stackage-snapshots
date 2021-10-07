@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: test
+
+    strategy:
+      matrix:
+        snapshot:
+          - lts/17/15.yaml
+          - lts/18/0.yaml
+          - lts/18/2.yaml
+          - lts/18/5.yaml
+          - lts/18/10.yaml
+        include:
+          - snapshot: lts/17/15.yaml
+            extra-dependencies: '[frontrow-app]'
+          - snapshot: lts/18/0.yaml
+            extra-dependencies: '[frontrow-app]'
+          - snapshot: lts/18/2.yaml
+            extra-dependencies: '[frontrow-app]'
+          - snapshot: lts/18/5.yaml
+            extra-dependencies: '[freckle-app]'
+          - snapshot: lts/18/10.yaml
+            extra-dependencies: '[freckle-app]'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          m4 -D RESOLVER=../${{ matrix.snapshot }} \
+            < stack.yaml.in > stack.yaml
+          m4 -D EXTRA_DEPENDENCIES=${{ matrix.extra-dependencies }} \
+            < package.yaml.in > package.yaml
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.stack
+            ./test/.stack-work
+          key: ${{ matrix.snapshot }}-${{ hashFiles('test/*.yaml') }}
+          restore-keys: |
+            ${{ matrix.snapshot }}-
+
+      - name: Build
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          stack --no-terminal setup
+          stack --no-terminal build --dependencies-only
+
+  status:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job to act as our overall required PR Status"
