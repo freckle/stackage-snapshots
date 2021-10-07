@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment:
+    env:
       CURATOR_RELEASE: commit-1ef870178f6a0544fe5a3fd23a83fc075aabd695
 
     strategy:
