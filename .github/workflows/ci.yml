@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment:
+      CURATOR_RELEASE: commit-1ef870178f6a0544fe5a3fd23a83fc075aabd695
+
+    strategy:
+      matrix:
+        snapshot:
+          - lts/17/15.yaml
+          - lts/18/0.yaml
+          - lts/18/2.yaml
+          - lts/18/5.yaml
+          - lts/18/10.yaml
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: mkdir -p ./test
+
+      - name: Install Curator
+        run: |
+          curator_src=https://github.com/commercialhaskell/curator/releases/download/$CURATOR_RELEASE/curator.bz2
+          curl -L "$curator_src" | bunzip2 >./curator
+          chmod +x ./curator
+        working-directory: test
+
+      - name: Setup Snapshot
+        run: cp -v "${{ matrix.snapshot }}" ./snapshot.yaml
+        working-directory: test
+
+      - name: Setup Constraints
+          # Translates "lts/X/Y(/SUFFIX).yaml" into "lts-X.Y"
+          target=$(echo "${{ matrix.snapshot }}" | sed 's|^lts/\([0-9]*\)/\([0-9]*\).*$|lts-\1.\2|')
+          ./curator constraints --target "$target"
+        working-directory: test
+
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: |
+            ~/.stack
+          key: ${{ matrix.snapshot }}-${{ hashFiles('test/*.yaml') }}
+          restore-keys:
+            - ${{ matrix.snapshot }}-
+
+      - name: Unpack
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: curator unpack
+        working-directory: test
+
+      - name: Build
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: >-
+          stack
+          --terminal
+          --system-ghc build
+          --test --no-run-tests
+          --bench --not-run-benchmarks
+        working-directory: test/unpack-dir
+
+  status:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job to act as our overall required PR Status"
