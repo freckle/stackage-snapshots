@@ -37,6 +37,7 @@ jobs:
         working-directory: test
 
       - name: Setup Constraints
+        run: |
           # Translates "lts/X/Y(/SUFFIX).yaml" into "lts-X.Y"
           target=$(echo "${{ matrix.snapshot }}" | sed 's|^lts/\([0-9]*\)/\([0-9]*\).*$|lts-\1.\2|')
           ./curator constraints --target "$target"
