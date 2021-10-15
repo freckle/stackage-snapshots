@@ -26,4 +26,5 @@ if [[ "$latest_resolver" != "$current_resolver" ]]; then
   mkdir -p "$(dirname "$latest_snapshot")"
   sed 's/^\(resolver: *\)[^ ]*\(.*\)$/\1'"$latest_resolver"'\2/' "$current_snapshot" >"$latest_snapshot"
   echo "Created $latest_snapshot ($latest_resolver) snapshot from $current_snapshot"
+  echo "Don't forget to update .github/workflows/ci.yml to include it"
 fi
