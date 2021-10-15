@@ -63,15 +63,8 @@ If so, update to them.
 
 ### Test the snapshot
 
-Test changes by updating an application to use a local copy in an adjacent
-clone:
-
-```yaml
-# stack.yaml
-resolver: ../../stackage-snapshots/lts/18/1.yaml
-```
-
-_Testing with `megarepo` is usually enough._
+CI will build a representative package against all resolvers when you open your
+PR.
 
 ### Migrate each Application to the new snapshots
 
