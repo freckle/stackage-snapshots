@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Perform a simplified (and dry-run) build of the representative package used on
+# CI. Can be used as as spot-check or to get updated package SHAs.
+#
+##
+set -euo pipefail
+
+if (($# != 1)) || [[ ! -f "$1" ]]; then
+  echo "usage: bin/check <snapshot>" >&2
+  exit 64
+fi
+
+cd test
+m4 -D "RESOLVER=../$1" <stack.yaml.in >stack.yaml
+m4 -D EXTRA_DEPENDENCIES=[] <package.yaml.in >package.yaml
+stack build --dry-run
+git clean -fd .
