@@ -21,6 +21,7 @@ jobs:
           - lts/18/2.yaml
           - lts/18/5.yaml
           - lts/18/10.yaml
+          - lts/18/13.yaml
         include:
           - snapshot: lts/17/15.yaml
             extra-dependencies: '[frontrow-app]'
@@ -31,6 +32,8 @@ jobs:
           - snapshot: lts/18/5.yaml
             extra-dependencies: '[freckle-app]'
           - snapshot: lts/18/10.yaml
+            extra-dependencies: '[freckle-app]'
+          - snapshot: lts/18/13.yaml
             extra-dependencies: '[freckle-app]'
       fail-fast: false
 
