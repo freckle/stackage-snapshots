@@ -61,10 +61,43 @@ If so, remove them and rely on the resolver version. If not,
 
 If so, update to them.
 
-### Test the snapshot
+### Updating Hackage package checksums
 
-CI will build a representative package against all resolvers when you open your
-PR.
+- Update the version, and throw the previous SHA off in some minor way
+
+  ```diff
+       # Newer versions that will arrive in next major LTS
+     - faktory-1.1.1.0@sha256:e025e23f2d07d21def0d143302051a87f526b70620679036815696676daf9f91,9047
+     - aws-xray-client-persistent-0.1.0.2@sha256:f00b3c3da576c488f2605ab5d049437d935eae429e7fe0eb9a6dc53d0367aebc,1682
+  -  - freckle-app-1.0.0.3@sha256:1eb1b4cf1fb9313bd42cec1b3400586bd5b1de65f5c692f292ff541e0198f784,6269
+  +  - freckle-app-1.0.0.4@sha256:1eb1b4cf1fb9313bd42cec1b3400586bd5b1de65f5c692f292ff541e0198f785,6269
+  ```
+
+- Use `bin/check`, which will fail
+
+  ```
+  Could not find freckle-app-1.0.0.4@sha256:1eb1b4cf1fb9313bd42cec1b3400586bd5b1de65f5c692f292ff541e0198f785,6269 on Hackage
+  The specified revision was not found.
+  Possible candidates: freckle-app-1.0.0.4@sha256:8cb624bb3e8805d626b700127690d54d1ddc736073720ac9806a3b04dd3c3216,6244.
+  ```
+
+  If you forgot to modify the SHA in step 1, you will get a _Mismatched package
+  identifier_ error instead of this one.
+
+- Use the SHA visible in the error message
+
+  ```diff
+       # Newer versions that will arrive in next major LTS
+     - faktory-1.1.1.0@sha256:e025e23f2d07d21def0d143302051a87f526b70620679036815696676daf9f91,9047
+     - aws-xray-client-persistent-0.1.0.2@sha256:f00b3c3da576c488f2605ab5d049437d935eae429e7fe0eb9a6dc53d0367aebc,1682
+  -  - freckle-app-1.0.0.4@sha256:1eb1b4cf1fb9313bd42cec1b3400586bd5b1de65f5c692f292ff541e0198f785,6269
+  +  - freckle-app-1.0.0.4@sha256:8cb624bb3e8805d626b700127690d54d1ddc736073720ac9806a3b04dd3c3216,6244
+  ```
+
+### Testing the snapshot
+
+`bin/check` performs a `--dry-run` build, which is fast but not a real guarantee
+that the snapshot will compile. CI builds the representative package fully.
 
 ### Migrate each Application to the new snapshots
 
