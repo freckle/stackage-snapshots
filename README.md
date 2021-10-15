@@ -5,7 +5,8 @@ https://docs.haskellstack.org/en/stable/pantry/#snapshot-location
 Centralizing the `extra-deps` we require throughout our Haskell applications.
 Freckle team members can see more details in the [RFC][rfc].
 
-[rfc]: https://renaissancelearning.atlassian.net/wiki/spaces/EN/pages/41987178508/Shared+Backend+Stackage+Snapshot
+[rfc]:
+  https://renaissancelearning.atlassian.net/wiki/spaces/EN/pages/41987178508/Shared+Backend+Stackage+Snapshot
 
 ## Usage
 
