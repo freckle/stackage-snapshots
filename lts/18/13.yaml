@@ -5,7 +5,7 @@ packages:
   # === Dependencies we own
 
   # Newer versions that will arrive in next major LTS
-  - faktory-1.1.1.0@sha256:e025e23f2d07d21def0d143302051a87f526b70620679036815696676daf9f91,9047
+  - faktory-1.1.2.0@sha256:b2a1986095aefa645f6ad701504e1671ddfeb36f11b68434837fc9fcd3594ca8,9078
   - aws-xray-client-persistent-0.1.0.2@sha256:f00b3c3da576c488f2605ab5d049437d935eae429e7fe0eb9a6dc53d0367aebc,1682
   - freckle-app-1.0.0.4@sha256:8cb624bb3e8805d626b700127690d54d1ddc736073720ac9806a3b04dd3c3216,6244
 
