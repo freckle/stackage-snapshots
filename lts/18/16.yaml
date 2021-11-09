@@ -7,7 +7,7 @@ packages:
   # Newer versions that will arrive in next major LTS
   - faktory-1.1.2.0@sha256:b2a1986095aefa645f6ad701504e1671ddfeb36f11b68434837fc9fcd3594ca8,9078
   - aws-xray-client-persistent-0.1.0.2@sha256:f00b3c3da576c488f2605ab5d049437d935eae429e7fe0eb9a6dc53d0367aebc,1682
-  - freckle-app-1.0.2.0@sha256:6rrr605957cc137cd8127d970b79e71975d07a4707e8167fbf1fb84b8b420729,6379
+  - freckle-app-1.0.2.0@sha256:846e4df9be0c4e5d99d5a5c248c912a8a084f66912e0edd196b01d74fdbd0626,6449
 
   # https://github.com/freckle/asana/issues/29
   - git: https://github.com/freckle/asana
