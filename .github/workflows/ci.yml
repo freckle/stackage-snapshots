@@ -76,6 +76,45 @@ jobs:
           stack --no-terminal setup
           stack --no-terminal build --dependencies-only
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: prep
+        run: |
+          latest=$(find lts/ -type f | sort --reverse --version-sort | head -n 1)
+
+          if [ ! -f "$latest" ]; then
+            echo "Unable to find latest snapshot" >&2
+            exit 1
+          fi
+
+          echo "::set-output name=snapshot::$latest"
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            /tmp/cache/lsd
+          key: ${{ runner.os }}-${{ steps.prep.outputs.snapshot }}-lint
+
+      - uses: robinraju/release-downloader@v1.2
+        with:
+          repository: freckle/lsd
+          latest: true
+          fileName: lsd-x86_64-linux.tar.gz
+
+      - name: Extract
+        run: tar -xzf lsd-x86_64-linux.tar.gz
+
+      - name: Lint ${{ steps.prep.outputs.snapshot }}
+        run: |
+          ./lsd/lsd \
+            --cache-dir /tmp/cache/lsd \
+            --color always \
+            --exclude '*/amazonka' \
+            --exclude '*/yesod-routes-flow' \
+            ${{ steps.prep.outputs.snapshot }}
+
   status:
     needs: [test]
     runs-on: ubuntu-latest
