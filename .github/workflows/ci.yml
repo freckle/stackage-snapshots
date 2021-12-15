@@ -111,6 +111,8 @@ jobs:
           ./lsd/lsd \
             --cache-dir /tmp/cache/lsd \
             --color always \
+            --exclude '*/amazonka' \
+            --exclude '*/yesod-routes-flow' \
             ${{ steps.prep.outputs.snapshot }}
 
   status:
