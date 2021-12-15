@@ -1,8 +1,6 @@
 name: example
 version: 0.0.0.0
 
-# Library dependencies should be packages that are available to check within
-# any of our snapshots.
 library:
   dependencies:
     - Glob
@@ -75,6 +73,7 @@ library:
     - filepath
     - foldl
     - formatting
+    - freckle-app
     - gauge
     - generic-arbitrary
     - graphula
@@ -185,9 +184,3 @@ library:
     - yesod-routes-flow
     - yesod-static
     - yesod-test
-
-executables:
-  # This executable's dependencies are injected on a snapshot-by-snapshot basis to
-  # extend the test packages for that snapshot only.
-  example:
-    dependencies: EXTRA_DEPENDENCIES

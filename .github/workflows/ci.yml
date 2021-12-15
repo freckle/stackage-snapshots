@@ -1,9 +1,6 @@
 name: CI
 
-on:
-  pull_request:
-  push:
-    branches: main
+on: pull_request
 
 jobs:
   test:
@@ -13,68 +10,40 @@ jobs:
       run:
         working-directory: test
 
-    strategy:
-      matrix:
-        snapshot:
-          - lts/17/15.yaml
-          - lts/18/0.yaml
-          - lts/18/2.yaml
-          - lts/18/5.yaml
-          - lts/18/10.yaml
-          - lts/18/13.yaml
-          - lts/18/13/FR1.yaml
-          - lts/18/15.yaml
-          - lts/18/16.yaml
-          - lts/18/18.yaml
-          - lts/18/18/FR1.yaml
-        include:
-          - snapshot: lts/17/15.yaml
-            extra-dependencies: '[frontrow-app]'
-          - snapshot: lts/18/0.yaml
-            extra-dependencies: '[frontrow-app]'
-          - snapshot: lts/18/2.yaml
-            extra-dependencies: '[frontrow-app]'
-          - snapshot: lts/18/5.yaml
-            extra-dependencies: '[freckle-app]'
-          - snapshot: lts/18/10.yaml
-            extra-dependencies: '[freckle-app]'
-          - snapshot: lts/18/13.yaml
-            extra-dependencies: '[freckle-app]'
-          - snapshot: lts/18/13/FR1.yaml
-            extra-dependencies: '[freckle-app]'
-          - snapshot: lts/18/15.yaml
-            extra-dependencies: '[freckle-app]'
-          - snapshot: lts/18/16.yaml
-            extra-dependencies: '[freckle-app]'
-          - snapshot: lts/18/18.yaml
-            extra-dependencies: '[freckle-app]'
-          - snapshot: lts/18/18/FR1.yaml
-            extra-dependencies: '[freckle-app]'
-      fail-fast: false
-
     steps:
       - uses: actions/checkout@v2
+      - id: prep
+        run: |
+          printf "::set-output name=snapshot::"
+          find ../lts/ -type f | sort --reverse --version-sort | head -n 1
+
       - name: Setup
         run: |
-          m4 -D RESOLVER=../${{ matrix.snapshot }} \
+          m4 -D RESOLVER=${{ steps.prep.outputs.snapshot }} \
             < stack.yaml.in > stack.yaml
-          m4 -D EXTRA_DEPENDENCIES=${{ matrix.extra-dependencies }} \
-            < package.yaml.in > package.yaml
 
       - uses: actions/cache@v2
         with:
           path: |
             ~/.stack
             ./test/.stack-work
-          key: ${{ matrix.snapshot }}-${{ hashFiles('test/*.yaml') }}
+          key: ${{ steps.prep.outputs.snapshot }}-${{ hashFiles('test/*.yaml') }}
           restore-keys: |
-            ${{ matrix.snapshot }}-
+            ${{ steps.prep.outputs.snapshot }}-
 
       - name: Build
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           stack --no-terminal setup
           stack --no-terminal build --dependencies-only
+          stack --no-terminal install --copy-compiler-tool \
+            apply-refact \
+            dhall \
+            fast-tags \
+            hlint \
+            stylish-haskell \
+            brittany-0.13.1.2 \
+            weeder-2.2.0
 
   lint:
     runs-on: ubuntu-latest
@@ -82,20 +51,8 @@ jobs:
       - uses: actions/checkout@v2
       - id: prep
         run: |
-          latest=$(find lts/ -type f | sort --reverse --version-sort | head -n 1)
-
-          if [ ! -f "$latest" ]; then
-            echo "Unable to find latest snapshot" >&2
-            exit 1
-          fi
-
-          echo "::set-output name=snapshot::$latest"
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            /tmp/cache/lsd
-          key: ${{ runner.os }}-${{ steps.prep.outputs.snapshot }}-lint
+          printf "::set-output name=snapshot::"
+          find lts/ -type f | sort --reverse --version-sort | head -n 1
 
       - uses: robinraju/release-downloader@v1.2
         with:
@@ -109,14 +66,7 @@ jobs:
       - name: Lint ${{ steps.prep.outputs.snapshot }}
         run: |
           ./lsd/lsd \
-            --cache-dir /tmp/cache/lsd \
             --color always \
             --exclude '*/amazonka' \
             --exclude '*/yesod-routes-flow' \
             ${{ steps.prep.outputs.snapshot }}
-
-  status:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Job to act as our overall required PR Status"

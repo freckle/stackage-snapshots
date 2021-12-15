@@ -22,6 +22,10 @@ We define Snapshots built on a given LTS and match the same file structure:
 lts-X.Y -> lts/X/Y.yaml
 ```
 
+Once committed to `main`, **Snaphots are immutable**. These files are cached in
+various ways as they're used and modifying one in place could result in a very
+confusing and frustrating experience for developers.
+
 To make updates to a Snapshot without changing the base resolver, create a new
 snapshot at:
 
@@ -39,29 +43,32 @@ We try to do this every two weeks, but feel free to do it whenever you like.
 
 1. Run `bin/new-snapshot`
 
-Proceed with the following maintenance steps:
+## Automated linting
 
-### Update any dependencies
+CI will run [LSD][], which checks for:
 
-**Do any git dependencies have the changes we need in Hackage now?**
+[lsd]: https://github.com/freckle/lsd
 
-If so, make them Hackage dependencies. If not,
+- Any Hackage dependencies with same-or-newer version in Stackage
 
-**Do any git dependencies have newer commits?**
+  We should remove the `extra-dep`, unless there's a reason we're staying behind.
 
-If so, and they're our own package, update the `commit` to latest. If they are
-not our own package, leave them be. Unless there is explicit reason to update,
-we'll wait until the next Hackage version for packages we don't own ourselves.
+- Any Hackage dependencies with a newer released version
 
-**Do any Hackage dependences have this version (or newer) in the new resolver?**
+  We should update, unless there's a reason we're staying behind.
 
-If so, remove them and rely on the resolver version. If not,
+- Any Git dependencies with a version-like tag newer than the commit
 
-**Do any Hackage dependencies have newer versions on Hackage?**
+  This likely means a released version on Hackage we can move to.
 
-If so, update to them.
+- Any Git dependencies with newer commits on the default branch
 
-### Updating Hackage package checksums
+  We may want to update.
+
+If the `lint` step generates a false-positive, you can silence it by adding an
+`--exclude` option.
+
+## Updating Hackage package checksums
 
 - Update the version, and throw the previous SHA off in some minor way
 
@@ -94,12 +101,12 @@ If so, update to them.
   +  - freckle-app-1.0.0.4@sha256:8cb624bb3e8805d626b700127690d54d1ddc736073720ac9806a3b04dd3c3216,6244
   ```
 
-### Testing the snapshot
+## Testing the snapshot
 
 `bin/check` performs a `--dry-run` build, which is fast but not a real guarantee
 that the snapshot will compile. CI builds the representative package fully.
 
-### Migrate each Application to the new snapshots
+## Migrating Applications
 
 Remove any app-specific `extra-deps` are no longer required.
 
