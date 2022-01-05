@@ -1,0 +1,25 @@
+name: Bump
+
+on:
+  schedule:
+    - cron: "0 0 01 * *"
+    - cron: "0 0 14 * *"
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: bump
+        run: ./bin/new-snapshot
+
+      - if: ${{ steps.bump.outputs.bumped == 'true' }}
+        uses: peter-evans/create-pull-request@v3
+        with:
+          add-paths: ${{ steps.bump.outputs.path }}
+          commit-message: 'Create ${{ steps.bump.outputs.to }} Snapshot'
+          title: 'Create ${{ steps.bump.outputs.to }} Snapshot'
+          body: '[Resolver Changelog](https://rcl.freckle.com/?from=${{ steps.bump.outputs.from }}&to=${{ steps.bump.outputs.to }}).'
+          team-reviewers: freckle/backenders
