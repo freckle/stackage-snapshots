@@ -56,17 +56,17 @@ jobs:
 
       - uses: robinraju/release-downloader@v1.2
         with:
-          repository: freckle/lsd
+          repository: freckle/stack-lint-extra-deps
           latest: true
-          fileName: lsd-x86_64-linux.tar.gz
+          fileName: stack-lint-extra-deps-x86_64-linux.tar.gz
 
       - name: Extract
-        run: tar -xzf lsd-x86_64-linux.tar.gz
+        run: tar -xzf stack-lint-extra-deps-x86_64-linux.tar.gz
 
       - name: Lint ${{ steps.prep.outputs.snapshot }}
         run: |
-          ./lsd/lsd \
+          ./stack-lint-extra-deps/stack-lint-extra-deps \
             --color always \
             --exclude '*/amazonka' \
             --exclude '*/yesod-routes-flow' \
-            ${{ steps.prep.outputs.snapshot }}
+            --path ${{ steps.prep.outputs.snapshot }}
