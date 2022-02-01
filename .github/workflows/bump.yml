@@ -5,6 +5,11 @@ on:
     - cron: "0 0 01 * *"
     - cron: "0 0 14 * *"
 
+  # test changes to this file itself
+  pull_request:
+    paths:
+      - .github/workflows/bump.yml
+
 jobs:
   bump:
     runs-on: ubuntu-latest
@@ -18,8 +23,17 @@ jobs:
       - if: ${{ steps.bump.outputs.bumped == 'true' }}
         uses: peter-evans/create-pull-request@v3
         with:
+          # Use PAT so this will trigger test/lint on the created PR
+          token: ${{ secrets.FRECKLE_AUTOMATION_GITHUB_TOKEN }}
+          base: main
           add-paths: ${{ steps.bump.outputs.path }}
           commit-message: 'Create ${{ steps.bump.outputs.to }} Snapshot'
           title: 'Create ${{ steps.bump.outputs.to }} Snapshot'
-          body: '[Resolver Changelog](https://rcl.freckle.com/?from=${{ steps.bump.outputs.from }}&to=${{ steps.bump.outputs.to }}).'
-          team-reviewers: freckle/backenders
+          body: |
+            This PR was created automatically because a new LTS was available.
+            See [here][readme] for more details.
+
+            For a list of changed packages, see [here][rcl].
+
+            [readme]: https://github.com/freckle/stackage-snapshots#creating-a-new-snapshot
+            [rcl]: https://rcl.freckle.com/?from=${{ steps.bump.outputs.from }}&to=${{ steps.bump.outputs.to }}

@@ -39,15 +39,28 @@ _See [this Issue][issue] for a more complete discussion._
 
 ## Creating a new snapshot
 
-We try to do this every two weeks, but feel free to do it whenever you like.
+Every two weeks, the `bump.yml` workflow will run and, if a new resolver is
+available, create a PR that adds it. You can also do this manually at any time
+by running `bin/new-snapshot`.
 
-1. Run `bin/new-snapshot`
+This PR should be reviewed to understand the changes in the new resolver, if it
+contains important packages or a GHC upgrade, etc. It may require edits to
+compile. **In general**, if our tests and linting pass, it is acceptable to
+merge.
+
+If you would like to more thorough testing, you can update any app to use the
+resolver from the branch by changing its `stack.yaml`:
+
+```diff
+- resolver: https://raw.githubusercontent.com/freckle/stackage-snapshots/main/lts/18/21.yaml
++ resolver: https://raw.githubusercontent.com/freckle/stackage-snapshots/create-pull-request/patch/lts/18/23.yaml
+```
 
 ## Automated linting
 
-CI will run [LSD][], which checks for:
+CI will run [SLED][], which checks for:
 
-[lsd]: https://github.com/freckle/lsd
+[sled]: https://github.com/freckle/stack-lint-extra-deps
 
 - Any Hackage dependencies with same-or-newer version in Stackage
 
