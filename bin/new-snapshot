@@ -4,7 +4,7 @@ set -euo pipefail
 get_latest_lts() {
   curl --silent -I https://www.stackage.org/lts |
     sed '/^location: \/\(.*\)$/!d; s//\1/' |
-    dos2unix # fix up CRLF
+    tr -d '\r' # fix up CRLF
 }
 
 current_snapshot=$(find lts -type f | sort -rV | head -n 1)
