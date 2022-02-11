@@ -7,7 +7,8 @@ packages:
   # Newer versions that will arrive in next major LTS
   - faktory-1.1.2.1@sha256:cd63b696b273fa136d08d4b020a6859ceb7375a34b61129c470b827ab8ea0306,9080
   - aws-xray-client-persistent-0.1.0.2@sha256:f00b3c3da576c488f2605ab5d049437d935eae429e7fe0eb9a6dc53d0367aebc,1682
-  - freckle-app-1.0.2.2@sha256:93bf2fcac81e63f3dc9a75dc0c557d729f1ff7902dce9ab6da4b1852a80eac13,6445
+  - freckle-app-1.0.2.8@sha256:d1570aa603437a0b8296efddf37702ee49c2e3c5cbc46616fa38ff9f1f35b1d1,6627
+
   - bcp47-0.2.0.5@sha256:4074cb79be2d2f08121a43eccfb5b0e8a604b47f8197fee3b3b109bcb5cc1f4b,2945
 
   # https://github.com/freckle/asana/issues/29
@@ -24,8 +25,8 @@ packages:
   - hspec-2.9.4@sha256:658a6a74d5a70c040edd6df2a12228c6d9e63082adaad1ed4d0438ad082a0ef3,1709
   - hspec-core-2.9.4@sha256:a126e9087409fef8dcafcd2f8656456527ac7bb163ed4d9cb3a57589042a5fe8,6498
   - hspec-discover-2.9.4@sha256:fbcf49ecfc3d4da53e797fd0275264cba776ffa324ee223e2a3f4ec2d2c9c4a6,2165
-  - hspec-junit-formatter-1.1.0.0@sha256:c2f453440fc526cfd8f880b67876ac64d6e0fa13c8e94722a86e7996882e8ed0,3825
-  - network-3.1.2.5@sha256:433a5e076aaa8eb3e4158abae78fb409c6bd754e9af99bc2e87583d2bcd8404a,4888
+  - hspec-junit-formatter-1.1.0.1@sha256:0365b3a5aa2e292604826c7cf99ace8b3248a369d8f5821edff9bc1031e16a5c,3853
+  - network-3.1.2.7@sha256:e3d78b13db9512aeb106e44a334ab42b7aa48d26c097299084084cb8be5c5568,4888
 
   # Open an Issue asking the authors if they'd add them to Stackage and/or offer
   # to adopt them in Stackage ourselves. Check in each LTS bump if they've been
