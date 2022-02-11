@@ -70,4 +70,5 @@ jobs:
             --exclude '*/amazonka' \
             --exclude '*/yesod-routes-flow' \
             --exclude 'optparse-applicative' \
+            --exclude 'generic-lens' \
             --path ${{ steps.prep.outputs.snapshot }}
