@@ -7,7 +7,7 @@ packages:
   # Newer versions that will arrive in next major LTS
   - faktory-1.1.2.1@sha256:cd63b696b273fa136d08d4b020a6859ceb7375a34b61129c470b827ab8ea0306,9080
   - aws-xray-client-persistent-0.1.0.2@sha256:f00b3c3da576c488f2605ab5d049437d935eae429e7fe0eb9a6dc53d0367aebc,1682
-  - freckle-app-1.0.2.8@sha256:d1570aa603437a0b8296efddf37702ee49c2e3c5cbc46616fa38ff9f1f35b1d1,6627
+  - freckle-app-1.0.2.9@sha256:d1570aa603437a0b8296efddf37702ee49c2e3c5cbc46616fa38ff9f1f35b1d2,6627
 
   - bcp47-0.2.0.5@sha256:4074cb79be2d2f08121a43eccfb5b0e8a604b47f8197fee3b3b109bcb5cc1f4b,2945
 
@@ -46,7 +46,7 @@ packages:
   - optparse-applicative-0.15.1.0@sha256:29ff6146aabf54d46c4c8788e8d1eadaea27c94f6d360c690c5f6c93dac4b07e,4810
 
   # For weeder (which we're holding back to 2.2.0 because the latest targets GHC 9).
-  - dhall-1.40.2@sha256:db1d5f81912de498eeb8cf4535aebd76c695c016a8c5710970b61e83f3d345cb,34786
+  - dhall-1.41.0@sha256:db1d5f81912de498eeb8cf4535aebd76c695c016a8c5710970b61e83f3d345cc,34786
   - generic-lens-2.2.0.0@sha256:4008a39f464e377130346e46062e2ac1211f9d2e256bbb1857216e889c7196be,3867
 
   # 1.6.1 + fixes needed for newer unliftio, until 2.0 drops.
