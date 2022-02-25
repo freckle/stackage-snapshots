@@ -46,7 +46,7 @@ packages:
   - optparse-applicative-0.15.1.0@sha256:29ff6146aabf54d46c4c8788e8d1eadaea27c94f6d360c690c5f6c93dac4b07e,4810
 
   # For weeder (which we're holding back to 2.2.0 because the latest targets GHC 9).
-  - dhall-1.41.1@sha256:df0aac213173f51a31b0d4515b6f2a0665043dc97d6b765258c8da860a7d9bd2,15475
+  - dhall-1.41.1@sha256:4aba33b3a390fe05891285568d53c10ead112695ef217cc512616a0d7bd00483,15475
   - generic-lens-2.2.0.0@sha256:4008a39f464e377130346e46062e2ac1211f9d2e256bbb1857216e889c7196be,3867
 
   # 1.6.1 + fixes needed for newer unliftio, until 2.0 drops.
