@@ -15,10 +15,6 @@ packages:
   - git: https://github.com/freckle/asana
     commit: 91ce6ade118674bb273966943370684eba71f227
 
-  # https://app.asana.com/0/399653121150251/1199556619843537/f
-  - git: https://github.com/freckle/yesod-routes-flow
-    commit: 2a9cd873880956dd9a0999b593022d3c746324e8
-
   # === Dependencies we don't own
 
   # Newer versions that will arrive in next major LTS

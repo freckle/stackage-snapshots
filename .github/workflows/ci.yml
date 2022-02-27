@@ -68,7 +68,6 @@ jobs:
           ./stack-lint-extra-deps/stack-lint-extra-deps \
             --color always \
             --exclude '*/amazonka' \
-            --exclude '*/yesod-routes-flow' \
             --exclude 'optparse-applicative' \
             --exclude 'generic-lens' \
             --exclude 'dhall' \
