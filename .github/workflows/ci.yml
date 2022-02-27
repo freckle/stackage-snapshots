@@ -71,4 +71,5 @@ jobs:
             --exclude '*/yesod-routes-flow' \
             --exclude 'optparse-applicative' \
             --exclude 'generic-lens' \
+            --exclude 'dhall' \
             --path ${{ steps.prep.outputs.snapshot }}
