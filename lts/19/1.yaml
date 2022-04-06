@@ -7,7 +7,6 @@ packages:
   - bcp47-orphans-0.1.0.5
   - freckle-app-1.0.2.10
   - sendgrid-v3-0.3.0.0
-  - stratosphere-0.59.1
 
   # https://github.com/freckle/asana/issues/29
   - github: freckle/asana
