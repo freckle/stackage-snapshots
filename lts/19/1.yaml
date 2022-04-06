@@ -10,7 +10,7 @@ packages:
 
   # https://github.com/freckle/asana/issues/29
   - github: freckle/asana
-    commit: 91ce6ade118674bb273966943370684eba71f227
+    commit: 9908eec940a6e4e19f5dd0ce1ebada2771f99f55
 
   # - aws-xray-client-0.1.0.1
   # - aws-xray-client-persistent-0.1.0.4
