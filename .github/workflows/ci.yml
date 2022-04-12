@@ -70,7 +70,5 @@ jobs:
           ./stack-lint-extra-deps/stack-lint-extra-deps \
             --color always \
             --exclude '*/amazonka' \
-            --exclude 'optparse-applicative' \
-            --exclude 'generic-lens' \
-            --exclude 'dhall' \
+            --exclude 'algebraic-graphs' \
             --path ${{ steps.prep.outputs.snapshot }}

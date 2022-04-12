@@ -34,7 +34,7 @@ packages:
   - contiguous-0.6.1.1
 
   # For weeder-2.3.0
-  - algebraic-graphs-0.6
+  - algebraic-graphs-0.5
 
   # https://github.com/hasura/monad-validate/pull/5
   - github: LeapYear/monad-validate
