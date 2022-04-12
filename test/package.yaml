@@ -146,7 +146,6 @@ library:
     - shakespeare
     - split
     - statistics
-    - stratosphere
     - strict
     - tagged
     - tar

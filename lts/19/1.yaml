@@ -1,0 +1,59 @@
+# https://renaissancelearning.atlassian.net/wiki/spaces/EN/pages/41987178508/Shared+Backend+Stackage+Snapshot
+resolver: lts-19.1
+
+packages:
+  # === Dependencies we own
+  - aws-xray-client-0.1.0.2
+  - aws-xray-client-persistent-0.1.0.5
+  - aws-xray-client-wai-0.1.0.2
+  - bcp47-0.2.0.6
+  - bcp47-orphans-0.1.0.5
+  - freckle-app-1.0.2.10
+  - sendgrid-v3-0.3.0.0
+
+  # https://github.com/freckle/asana/issues/29
+  - github: freckle/asana
+    commit: 9908eec940a6e4e19f5dd0ce1ebada2771f99f55
+
+  # === Dependencies we don't own
+  - country-0.2.2
+  - datadog-0.3.0.0
+  - ekg-core-0.1.1.7
+  - file-location-0.4.9.1
+  - jose-jwt-0.9.4
+  - oauthenticated-0.3.0.0
+  - oidc-client-0.6.0.0
+  - pwstore-fast-2.4.4
+
+  # Transitive dependencies for country
+  - run-st-0.1.1.0
+  - zigzag-0.0.1.0
+  - bytebuild-0.3.10.0
+  - bytehash-0.1.0.0
+  - byteslice-0.2.7.0
+  - contiguous-0.6.1.1
+
+  # For weeder-2.3.0
+  - algebraic-graphs-0.5
+
+  # https://github.com/hasura/monad-validate/pull/5
+  - github: LeapYear/monad-validate
+    commit: 5b181b7c57d6e2c975c533b0a0072e9aeb15fb99
+
+  # 2.0-rc + SSO support
+  - github: brendanhay/amazonka
+    commit: f73a957d05f64863e867cf39d0db260718f0fadd
+    subdirs:
+      - lib/amazonka
+      - lib/amazonka-core
+      - lib/services/amazonka-cloudformation
+      - lib/services/amazonka-cloudwatch-logs
+      - lib/services/amazonka-ecr
+      - lib/services/amazonka-ecs
+      - lib/services/amazonka-polly
+      - lib/services/amazonka-rds
+      - lib/services/amazonka-s3
+      - lib/services/amazonka-sns
+      - lib/services/amazonka-ssm
+      - lib/services/amazonka-sso
+      - lib/services/amazonka-sts

@@ -13,6 +13,5 @@ fi
 
 cd test
 m4 -D "RESOLVER=../$1" <stack.yaml.in >stack.yaml
-m4 -D EXTRA_DEPENDENCIES=[] <package.yaml.in >package.yaml
 stack build --dry-run
 git clean -fd .

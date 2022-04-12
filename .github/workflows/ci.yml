@@ -41,9 +41,11 @@ jobs:
             dhall \
             fast-tags \
             hlint \
-            stylish-haskell \
-            brittany-0.13.1.2 \
-            weeder-2.2.0
+            brittany \
+            weeder
+
+          # NOTE: stylish-haskell is broken on lts-19.0 / ghc-9.0. Bring it back
+          # when we get to ghc-9.2
 
   lint:
     runs-on: ubuntu-latest
@@ -68,7 +70,5 @@ jobs:
           ./stack-lint-extra-deps/stack-lint-extra-deps \
             --color always \
             --exclude '*/amazonka' \
-            --exclude 'optparse-applicative' \
-            --exclude 'generic-lens' \
-            --exclude 'dhall' \
+            --exclude 'algebraic-graphs' \
             --path ${{ steps.prep.outputs.snapshot }}
