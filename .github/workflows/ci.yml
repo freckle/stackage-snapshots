@@ -41,7 +41,7 @@ jobs:
             dhall \
             fast-tags \
             hlint \
-            brittany
+            brittany \
             weeder
 
           # NOTE: stylish-haskell is broken on lts-19.0 / ghc-9.0. Bring it back
