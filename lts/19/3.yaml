@@ -12,9 +12,7 @@ packages:
   - sendgrid-v3-0.3.0.0
 
   # Newer versions that will arrive in next major LTS
-  # N.B. When replacing this dependency, check that it builds on macOS.
-  # https://github.com/freckle/stackage-snapshots/pull/35
-  - hspec-junit-formatter-1.1.0.1@sha256:0365b3a5aa2e292604826c7cf99ace8b3248a369d8f5821edff9bc1031e16a5c,3853
+  - hspec-junit-formatter-1.1.0.2@sha256:9c30765a224e00d44686e47372f77415e54433823588a4a9637163c2750a1f5f,3825
 
   # https://github.com/freckle/asana/issues/29
   - github: freckle/asana
