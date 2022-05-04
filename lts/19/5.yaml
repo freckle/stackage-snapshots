@@ -3,16 +3,11 @@ resolver: lts-19.5
 
 packages:
   # === Dependencies we own
-  - aws-xray-client-0.1.0.2
-  - aws-xray-client-persistent-0.1.0.5
-  - aws-xray-client-wai-0.1.0.2
   - bcp47-0.2.0.6
   - bcp47-orphans-0.1.0.5
   - freckle-app-1.0.2.10
   - sendgrid-v3-0.3.0.0
-
-  # Newer versions that will arrive in next major LTS
-  - hspec-junit-formatter-1.1.0.2@sha256:9c30765a224e00d44686e47372f77415e54433823588a4a9637163c2750a1f5f,3825
+  - hspec-junit-formatter-1.1.0.2
 
   # https://github.com/freckle/asana/issues/29
   - github: freckle/asana
