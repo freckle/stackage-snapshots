@@ -11,7 +11,7 @@ packages:
 
   # https://github.com/freckle/asana/issues/29
   - github: freckle/asana
-    commit: 9908eec940a6e4e19f5dd0ce1ebada2771f99f55
+    commit: db0c47d5320e1e9b998c01aacd214b92d6901ce3
 
   # fork with fix for https://github.com/typeable/generic-arbitrary/issues/14
   - github: freckle/generic-arbitrary
