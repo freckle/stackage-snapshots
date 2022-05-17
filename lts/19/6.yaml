@@ -18,11 +18,15 @@ packages:
     commit: e183c7a5b60a78b80b9e35d1bbb76e676ce35d11
 
   # === Dependencies we don't own
+  - bugsnag-1.0.0.1
+  - bugsnag-wai-1.0.0.1
+  - bugsnag-yesod-1.0.0.1
   - country-0.2.2
   - datadog-0.3.0.0
   - ekg-core-0.1.1.7
   - file-location-0.4.9.1
   - jose-jwt-0.9.4
+  - memcache-0.3.0.1
   - oauthenticated-0.3.0.0
   - oidc-client-0.6.0.0
   - pwstore-fast-2.4.4
