@@ -27,6 +27,7 @@ packages:
   - oauthenticated-0.3.0.0
   - oidc-client-0.6.0.0
   - pwstore-fast-2.4.4
+  - weeder-0.2.3.1
 
   # Transitive dependencies for country
   - run-st-0.1.1.0
