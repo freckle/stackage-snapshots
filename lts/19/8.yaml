@@ -7,6 +7,7 @@ packages:
   - bcp47-orphans-0.1.0.5
   - freckle-app-1.0.4.0
   - sendgrid-v3-0.3.0.0
+  - scientist-0.0.0.0
   - hspec-junit-formatter-1.1.0.2
 
   # https://github.com/freckle/asana/issues/29
