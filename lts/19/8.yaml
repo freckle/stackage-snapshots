@@ -13,10 +13,6 @@ packages:
   - github: freckle/asana
     commit: 9c31abc6dbc16aa7172389d3f62a137f84302aab
 
-  # fork with fix for https://github.com/typeable/generic-arbitrary/issues/14
-  - github: freckle/generic-arbitrary
-    commit: e183c7a5b60a78b80b9e35d1bbb76e676ce35d11
-
   # === Dependencies we don't own
   - bugsnag-1.0.0.1
   - bugsnag-wai-1.0.0.1
