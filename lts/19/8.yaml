@@ -1,5 +1,5 @@
 # https://renaissancelearning.atlassian.net/wiki/spaces/EN/pages/41987178508/Shared+Backend+Stackage+Snapshot
-resolver: lts-19.6
+resolver: lts-19.8
 
 packages:
   # === Dependencies we own
