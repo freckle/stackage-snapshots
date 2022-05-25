@@ -71,4 +71,5 @@ jobs:
             --color always \
             --exclude '*/amazonka' \
             --exclude 'weeder' \
+            --exclude 'algebraic-graphs' \
             --path ${{ steps.prep.outputs.snapshot }}
