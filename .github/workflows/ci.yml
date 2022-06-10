@@ -42,7 +42,7 @@ jobs:
             fast-tags \
             hlint \
             brittany \
-            weeder
+            weeder-2.3.0
 
           # NOTE: stylish-haskell is broken on lts-19.0 / ghc-9.0. Bring it back
           # when we get to ghc-9.2
