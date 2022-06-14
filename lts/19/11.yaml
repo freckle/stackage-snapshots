@@ -4,15 +4,13 @@ resolver: lts-19.11
 packages:
   # === Dependencies we own
   - Blammo-1.0.1.1
+  - asana-1.0.0.0
   - bcp47-0.2.0.6
   - bcp47-orphans-0.1.0.5
-  - freckle-app-1.2.0.0
+  - freckle-app-1.2.0.2
   - hspec-junit-formatter-1.1.0.2
   - scientist-0.0.0.0
   - sendgrid-v3-0.3.0.0
-
-  - github: freckle/asana-hs
-    commit: 087b0d0447292442cf3ae80dddf3988b225b98d7
 
   # === Dependencies we don't own
   - bugsnag-1.0.0.1
@@ -26,7 +24,7 @@ packages:
   - memcache-0.3.0.1
   - monad-logger-aeson-0.2.0.1
   - oauthenticated-0.3.0.0
-  - oidc-client-0.6.0.0
+  - oidc-client-0.6.1.0
   - pwstore-fast-2.4.4
 
   # Transitive dependencies for country
