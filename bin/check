@@ -6,12 +6,27 @@
 ##
 set -euo pipefail
 
-if (($# != 1)) || [[ ! -f "$1" ]]; then
-  echo "usage: bin/check <snapshot>" >&2
-  exit 64
+if (($# != 0)); then
+  snapshots=("$@")
+else
+  mapfile -t snapshots < <(find ./lts/ -type f | sort --reverse --version-sort | head -n 1)
 fi
 
-cd test
-m4 -D "RESOLVER=../$1" <stack.yaml.in >stack.yaml
-stack build --dry-run
-git clean -fd .
+for snapshot in "${snapshots[@]}"; do
+  (
+    cd test
+    m4 -D "RESOLVER=../$snapshot" <stack.yaml.in >stack.yaml
+    echo "Dry-run building $snapshot..."
+    stack build --dry-run
+    git clean -fd .
+  )
+
+  if command -v stack-lint-extra-deps &>/dev/null; then
+    echo "Linting $snapshot..."
+    stack lint-extra-deps \
+      --path "$snapshot" \
+      --exclude '*/amazonka' \
+      --exclude 'weeder' \
+      --exclude 'algebraic-graphs'
+  fi
+done
