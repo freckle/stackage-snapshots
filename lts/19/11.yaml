@@ -7,6 +7,7 @@ packages:
   - asana-1.0.0.0
   - bcp47-0.2.0.6
   - bcp47-orphans-0.1.0.5
+  - envparse-0.5.0
   - freckle-app-1.2.0.2
   - hspec-junit-formatter-1.1.0.2
   - scientist-0.0.0.0
