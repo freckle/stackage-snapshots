@@ -3,15 +3,15 @@ resolver: lts-19.13
 
 packages:
   # === Dependencies we own
-  - Blammo-1.0.1.1
+  - Blammo-1.0.2.2
   - asana-1.0.0.0
   - bcp47-0.2.0.6
   - bcp47-orphans-0.1.0.5
   - envparse-0.5.0
-  - freckle-app-1.2.0.2
+  - freckle-app-1.4.0.0
   - hspec-junit-formatter-1.1.0.2
   - scientist-0.0.0.0
-  - sendgrid-v3-0.3.0.0
+  - sendgrid-v3-1.0.0.0
 
   # === Dependencies we don't own
   - bugsnag-1.0.0.1
@@ -23,7 +23,7 @@ packages:
   - file-location-0.4.9.1
   - jose-jwt-0.9.4
   - memcache-0.3.0.1
-  - monad-logger-aeson-0.2.0.1
+  - monad-logger-aeson-0.3.0.2
   - oauthenticated-0.3.0.0
   - oidc-client-0.6.1.0
   - pwstore-fast-2.4.4
@@ -37,7 +37,7 @@ packages:
   - contiguous-0.6.2.0
 
   # Transitive dependencies for monad-logger-aeson
-  - context-0.2.0.0
+  - context-0.2.0.1
 
   # Fixes for https://github.com/typeable/generic-arbitrary/issues/14
   - generic-arbitrary-0.2.2
