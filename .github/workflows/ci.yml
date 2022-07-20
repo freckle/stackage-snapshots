@@ -8,18 +8,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - id: prep
+        name: Determine most recent snapshot
         run: |
           printf "::set-output name=snapshot::%s" "$PWD/"
           find lts/ -type f | sort --reverse --version-sort | head -n 1
 
-      - uses: actions/checkout@v3
+      - name: Checkout example project
+        uses: actions/checkout@v3
         with:
           repository: freckle/megarepo
           token: ${{ secrets.FRECKLE_AUTOMATION_GITHUB_TOKEN }}
           path: test/megarepo
 
-      - run: |
+      - name: Update example project resolver
+        run: |
           sed -i -E 's%^(resolver: *)([^ ]+)(.*)$%\1${{ steps.prep.outputs.snapshot }}\3%' stack.yaml
         working-directory: test/megarepo/backend
 
