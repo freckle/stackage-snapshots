@@ -30,6 +30,7 @@ jobs:
       - uses: freckle/stack-action@v3
         with:
           working-directory: test/megarepo/backend
+          test: false
 
       - run: make update.post
         working-directory: test/megarepo/backend
