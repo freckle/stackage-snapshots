@@ -88,22 +88,11 @@ maintain and Stackage authors have suggested not using them. Provided you are
 committing `.lock` files in your projects (we are), then those checksums will be
 maintained for you there and any differences visible in diffs already.
 
-## Checking the snapshot
-
-`bin/check` performs a `--dry-run` build, which is fast but not a real guarantee
-that the snapshot will compile. It will also run `stack lint-extra-deps` if you
-have that binary available on your system.
-
-By default `bin/check` runs on the latest snapshot in the `lts/` directory, but
-you can also pass any number of explicit paths instead.
-
 ## Testing the snapshot
 
-CI builds the representative package fully.
-
-## Migrating Applications
-
-Remove any app-specific `extra-deps` are no longer required.
+The CI suite checks out our most complicated Haskell project (megarepo) and
+builds it using the most recent snapshot in this repository. This example
+project is private, so CI won't work on PRs from forks.
 
 ---
 
