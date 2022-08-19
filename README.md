@@ -94,6 +94,19 @@ The CI suite checks out our most complicated Haskell project (megarepo) and
 builds it using the most recent snapshot in this repository. This example
 project is private, so CI won't work on PRs from forks.
 
+### Handling Red CI Caused by Example Project
+
+Sometimes, a new snapshot may make megarepo fail to compile without changes (new
+exports conflict, imports made redundant). This is a chicken-and-the-egg
+scenario since you can't update megarepo until you land the snapshot, and red CI
+is blocking it.
+
+For this case,
+
+- Locally use the new snapshot in megarepo (see above) and resolve the errors
+- Once good there, merge the new snapshot even though CI is red
+- Update megarepo to use the new snapshot immediately
+
 ---
 
 [LICENSE](./LICENSE)
