@@ -22,7 +22,7 @@ packages:
   - file-location-0.4.9.1
   - jose-jwt-0.9.4
   - memcache-0.3.0.1
-  - monad-logger-aeson-0.4.0.1
+  - monad-logger-aeson-0.4.0.2
   - monad-validate-1.2.0.1
   - oauthenticated-0.3.0.0
   - oidc-client-0.6.1.0
