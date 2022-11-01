@@ -3,7 +3,7 @@ resolver: lts-19.30
 
 packages:
   # === Dependencies we own
-  - Blammo-1.0.2.3
+  - Blammo-1.1.0.0
   - asana-1.0.0.0
   - bcp47-0.2.0.6
   - bcp47-orphans-0.1.0.5
@@ -12,7 +12,6 @@ packages:
   - hspec-junit-formatter-1.1.0.2
   - scientist-0.0.0.0
   - sendgrid-v3-1.0.0.0
-  - faktory-1.1.2.4
 
   # === Dependencies we don't own
   - bugsnag-1.0.0.1
