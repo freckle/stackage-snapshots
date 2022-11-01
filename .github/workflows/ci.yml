@@ -12,8 +12,10 @@ jobs:
       - id: prep
         name: Determine most recent snapshot
         run: |
-          printf "::set-output name=snapshot::%s" "$PWD/"
-          find lts/ -type f | sort --reverse --version-sort | head -n 1
+          {
+            printf "snapshot=%s" "$PWD/"
+            find lts/ -type f | sort --reverse --version-sort | head -n 1
+          } >> "$GITHUB_OUTPUT"
 
       - name: Checkout example project
         uses: actions/checkout@v3
@@ -30,6 +32,7 @@ jobs:
       - uses: freckle/stack-cache-action@v2
         with:
           working-directory: test/megarepo/backend
+          prefix: v1/
 
       - uses: freckle/stack-action@v3
         with:
@@ -45,10 +48,12 @@ jobs:
       - uses: actions/checkout@v3
       - id: prep
         run: |
-          printf "::set-output name=snapshot::%s" "$PWD/"
-          find lts/ -type f | sort --reverse --version-sort | head -n 1
+          {
+            printf "snapshot=%s" "$PWD/"
+            find lts/ -type f | sort --reverse --version-sort | head -n 1
+          } >> "$GITHUB_OUTPUT"
 
-      - uses: robinraju/release-downloader@v1.2
+      - uses: robinraju/release-downloader@v1.6
         with:
           repository: freckle/stack-lint-extra-deps
           latest: true
