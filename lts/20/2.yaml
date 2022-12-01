@@ -7,10 +7,8 @@ packages:
   - freckle-app-1.7.1.0
 
   # === Dependencies we don't own
-  - country-0.2.3
   - file-location-0.4.9.1
   - monad-validate-1.2.0.1
-  - oidc-client-0.6.1.0
 
   # For weeder-2.3.0
   - algebraic-graphs-0.5
