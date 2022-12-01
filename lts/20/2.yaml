@@ -9,6 +9,7 @@ packages:
   # === Dependencies we don't own
   - file-location-0.4.9.1
   - monad-validate-1.2.0.1
+  - oidc-client-0.7.0.1
 
   # For weeder-2.3.0
   - algebraic-graphs-0.5
