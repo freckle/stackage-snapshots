@@ -9,6 +9,8 @@ packages:
   # === Dependencies we don't own
   - file-location-0.4.9.1
   - monad-validate-1.2.0.1
+
+  # Megarepo needs updates to use latest (0.7)
   - oidc-client-0.6.1.0
 
   # For weeder-2.3.0
