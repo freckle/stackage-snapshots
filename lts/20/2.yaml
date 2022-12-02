@@ -13,9 +13,6 @@ packages:
   # Megarepo needs updates to use latest (0.7)
   - oidc-client-0.6.1.0
 
-  # For weeder-2.3.0
-  - algebraic-graphs-0.5
-
   # 2.0-rc + SSO support
   - github: brendanhay/amazonka
     commit: f73a957d05f64863e867cf39d0db260718f0fadd
