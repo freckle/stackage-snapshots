@@ -4,7 +4,7 @@ resolver: lts-20.6
 packages:
   # === Dependencies we own
   - asana-1.0.0.0
-  - freckle-app-1.7.1.0
+  - freckle-app-1.8.1.0
 
   # === Dependencies we don't own
   - file-location-0.4.9.1
