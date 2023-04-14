@@ -67,7 +67,5 @@ jobs:
           ./stack-lint-extra-deps/stack-lint-extra-deps \
             --color always \
             --exclude '*/amazonka' \
-            --exclude 'algebraic-graphs' \
-            --exclude 'country' \
             --exclude 'oidc-client' \
             --path ${{ steps.prep.outputs.snapshot }}
