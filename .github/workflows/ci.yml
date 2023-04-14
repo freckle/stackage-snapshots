@@ -29,15 +29,11 @@ jobs:
           sed -i -E 's%^(resolver: *)([^ ]+)(.*)$%\1${{ steps.prep.outputs.snapshot }}\3%' stack.yaml
         working-directory: test/megarepo/backend
 
-      - uses: freckle/stack-cache-action@v2
-        with:
-          working-directory: test/megarepo/backend
-          prefix: v1/
-
-      - uses: freckle/stack-action@v3
+      - uses: freckle/stack-action@v4
         with:
           working-directory: test/megarepo/backend
           test: false
+          cache-prefix: v1/
 
       - run: make update.post
         working-directory: test/megarepo/backend
