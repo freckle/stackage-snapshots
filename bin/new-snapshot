@@ -27,10 +27,12 @@ if [[ "$latest_resolver" != "$current_resolver" ]]; then
   sed 's/^\(resolver: *\)[^ ]*\(.*\)$/\1'"$latest_resolver"'\2/' "$current_snapshot" >"$latest_snapshot"
   echo "Created $latest_snapshot ($latest_resolver) snapshot from $current_snapshot"
 
-  if [[ ${GITHUB_ACTIONS:-false} == 'true' ]]; then
-    printf '::set-output name=bumped::true\n'
-    printf '::set-output name=from::%s\n' "$current_resolver"
-    printf '::set-output name=to::%s\n' "$latest_resolver"
-    printf '::set-output name=path::%s\n' "$latest_snapshot"
+  if [[ -n ${GITHUB_OUTPUT:-""} ]]; then
+    cat >>"$GITHUB_OUTPUT" <<EOM
+bumped=true
+from=$current_resolver
+to=$latest_resolver
+path=$latest_snapshot
+EOM
   fi
 fi
