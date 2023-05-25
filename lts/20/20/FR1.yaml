@@ -1,0 +1,37 @@
+# https://renaissancelearning.atlassian.net/wiki/spaces/EN/pages/41987178508/Shared+Backend+Stackage+Snapshot
+resolver: lts-20.20
+
+packages:
+  # === Dependencies we own
+  - asana-1.0.1.0
+  - freckle-app-1.9.0.1
+
+  # Fix for equality invariants
+  - github: freckle/hspec-expectations-json
+    commit: 36122dfcd06d6a45e1f8def6404950a2d5e0dfd7
+
+  # === Dependencies we don't own
+  - file-location-0.4.9.1
+  - monad-validate-1.2.0.1
+  - dotenv-0.11.0.0
+
+  # Megarepo needs updates to use latest (0.7)
+  - oidc-client-0.6.1.0
+
+  # 2.0-rc + SSO support
+  - github: brendanhay/amazonka
+    commit: f73a957d05f64863e867cf39d0db260718f0fadd
+    subdirs:
+      - lib/amazonka
+      - lib/amazonka-core
+      - lib/services/amazonka-cloudformation
+      - lib/services/amazonka-cloudwatch-logs
+      - lib/services/amazonka-ecr
+      - lib/services/amazonka-ecs
+      - lib/services/amazonka-polly
+      - lib/services/amazonka-rds
+      - lib/services/amazonka-s3
+      - lib/services/amazonka-sns
+      - lib/services/amazonka-ssm
+      - lib/services/amazonka-sso
+      - lib/services/amazonka-sts
