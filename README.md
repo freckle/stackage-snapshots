@@ -1,3 +1,8 @@
+**ARCHIVED**: Freckle no longer maintains this repositories. The snapshots
+can still be used, but no new ones will be created.
+
+---
+
 # Stackage Snapshots
 
 https://docs.haskellstack.org/en/stable/pantry/#snapshot-location
